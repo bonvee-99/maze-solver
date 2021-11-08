@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+	<div>
+		<h1>rows</h1>
+		<input id="numRows" type="number" value="6"/>
+	</div>
+	<button id="createMaze">Create Maze</button>
+	<button id="solveMaze">Solve Maze</button>
+	
+	<script src="blankMaze.js"></script>
+	<script src="../dist/clientMaze.js"></script>
+	<script src="../dist/stack.js"></script>
+	<script src="../dist/queue.js"></script>
+	<script>
+		document.getElementById("createMaze").addEventListener("click", paint);
+		
+		maze = [[true, false, true, true, true, true], [true, false, true, false, false, true], [true, false, true, true, false, true], [true, false, true, true, false, true], [true, false, false, true, false, true], [true, true, true, true, false, true]]
+
+		let os = new Queue();
+		document.getElementById("solveMaze").addEventListener("click", () => {
+			solveMaze(maze, os, drawPos)
+		});
+
+	let mazeWidth = document.getElementById("numRows").value;
+	let mazeHeight = mazeWidth;
+
+	function drawPos(x, y) {
+		cell = document.getElementById("cell_" + x + "_" + y);
+		cell.style.backgroundColor = "#F00000";	
+	}
+
+	function paint() {
+		// loop through 2d array paint (black for wall) (white for path)
+		createBlankMaze();
+		// create walls
+		for (let i = 0; i < maze.length; i++) {
+			// col
+			for (let j = 0; j < maze.length; j++) {
+			// row
+				if (maze[i][j] === false) {
+					cell = document.getElementById("cell_" + i + "_" + j);
+					cell.style.backgroundColor = "#000000";
+				}
+			}
+		}
+	}
+
+	</script>
+	<div id="maze_container" style="overflow-wrap: break-word; line-height: 14px; letter-spacing: -2px;"></div>
+</body>
+</html>
