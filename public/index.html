@@ -10,7 +10,9 @@
 <body>
 	<div>
 		<h1>rows</h1>
-		<input id="numRows" type="number" value="6"/>
+		<input id="numRows" type="range" min="1" max="100" value="6"/>
+		<p>Value: <span id="size"></span></p>
+		<div
 	</div>
 	<button id="createMaze">Create Maze</button>
 	<button id="solveMaze">Solve Maze</button>
@@ -21,35 +23,43 @@
 	<script src="../dist/queue.js"></script>
 	<script>
 		document.getElementById("createMaze").addEventListener("click", paint);
-		
-		maze = [[true, false, true, true, true, true], [true, false, true, false, false, true], [true, false, true, true, false, true], [true, false, true, true, false, true], [true, false, false, true, false, true], [true, true, true, true, false, true]]
 
-		let os = new Queue();
+		var slider = document.getElementById("numRows");
+		var output = document.getElementById("size");
+		output.innerHTML = slider.value;
+		
+		slider.oninput = function() {
+  			output.innerHTML = this.value;
+		}
+		
+		var maze;
+
 		document.getElementById("solveMaze").addEventListener("click", () => {
-			solveMaze(maze, os, drawPos)
+			solveMaze(maze, new Stack(), drawPos)
 		});
 
-	let mazeWidth = document.getElementById("numRows").value;
-	let mazeHeight = mazeWidth;
+		function drawPos(x, y) {
+			cell = document.getElementById("cell_" + y + "_" + x);
+			cell.style.backgroundColor = "#F00000";	
+		}
 
-	function drawPos(x, y) {
-		cell = document.getElementById("cell_" + x + "_" + y);
-		cell.style.backgroundColor = "#F00000";	
-	}
+		var mazeWidth, mazeHeight;
 
 	function paint() {
+		mazeWidth = document.getElementById("numRows").value;
+		mazeHeight = mazeWidth;
+
 		// loop through 2d array paint (black for wall) (white for path)
 		createBlankMaze();
+		maze = [];
 		// create walls
-		for (let i = 0; i < maze.length; i++) {
-			// col
-			for (let j = 0; j < maze.length; j++) {
-			// row
-				if (maze[i][j] === false) {
-					cell = document.getElementById("cell_" + i + "_" + j);
-					cell.style.backgroundColor = "#000000";
-				}
+		for (let i = 0; i < mazeWidth; i++) {
+			let col = [];
+			for (let j = 0; j < mazeHeight; j++) {
+				// for each cell make it true (does not have a wall)
+				col.push(true);
 			}
+			maze.push(col);
 		}
 	}
 

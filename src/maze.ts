@@ -61,14 +61,14 @@ const solveMaze = (maze: maze, os: OrderingStructure): boolean => {
 		let y: number = curr.y;
 
 		// check right bottom left top!
+		checkNextPos({x, y: y - 1}) 
+		checkNextPos({x: x - 1, y}) 
 		if (checkNextPos({x: x + 1, y}) === true) {
 			return true;
 		}
 		if (checkNextPos({x, y: y + 1}) === true) {
 			return true;
 		}
-		checkNextPos({x: x - 1, y}) 
-		checkNextPos({x, y: y - 1}) 
 	}
 	return false;
 }

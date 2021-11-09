@@ -97,3 +97,9 @@ test("successfully does not solve large maze with dfs - all directions", () => {
 	let os = new Queue();
 	expect(solveMaze(largeMaze, os)).toBe(false);
 })
+
+test("successfully solves very large maze", () => {
+	const largeMaze: maze = [[true,true,true,true,true,true,true,true,true,false],[false,false,false,false,false,false,false,false,true,false],[true,true,true,true,true,true,true,true,true,true],[false,true,true,true,false,false,false,false,false,false],[true,true,true,true,true,true,true,true,true,true],[true,true,true,true,true,true,true,true,true,true],[true,true,true,true,true,true,true,true,true,true],[true,true,true,true,true,true,true,true,true,true],[true,true,true,true,true,true,true,true,true,true],[true,true,true,true,true,true,true,true,true,true]]
+	let os = new Stack();
+	expect(solveMaze(largeMaze, os)).toBe(true);
+})

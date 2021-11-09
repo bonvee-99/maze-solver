@@ -47,14 +47,14 @@ var solveMaze = function (maze, os) {
         var x = curr.x;
         var y = curr.y;
         // check right bottom left top!
+        checkNextPos({ x: x, y: y - 1 });
+        checkNextPos({ x: x - 1, y: y });
         if (checkNextPos({ x: x + 1, y: y }) === true) {
             return true;
         }
         if (checkNextPos({ x: x, y: y + 1 }) === true) {
             return true;
         }
-        checkNextPos({ x: x - 1, y: y });
-        checkNextPos({ x: x, y: y - 1 });
     }
     return false;
 };

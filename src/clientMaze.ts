@@ -48,7 +48,6 @@ const solveMaze = async (maze: maze, os: OrderingStructure, drawPos: any) => {
 				} else {
 					processed[pos.x][pos.y] = true;
 					os.add(pos);
-					drawPos(pos.x, pos.y)
 				}
 			}
 		}
@@ -61,22 +60,24 @@ const solveMaze = async (maze: maze, os: OrderingStructure, drawPos: any) => {
 		let curr: position = os.remove();
 		let x: number = curr.x;
 		let y: number = curr.y;
-
+		// draw position when you take it off of the structure
+		drawPos(x, y);
+		
+		
 		// check right bottom left top!
+		checkNextPos({x, y: y - 1}) 
+		checkNextPos({x: x - 1, y}) 
+		if (checkNextPos({x, y: y + 1}) === true) {
+			drawPos(x, y + 1);
+			return true;
+		}	
 		if (checkNextPos({x: x + 1, y}) === true) {
 			drawPos(x + 1, y);
 			return true;
 		}
-		if (checkNextPos({x, y: y + 1}) === true) {
-			drawPos(x, y + 1);
-			return true;
-		}
-		checkNextPos({x: x - 1, y}) 
-		checkNextPos({x, y: y - 1}) 
 	}
 	return false;
 }
-
 const timer = (ms: number) => new Promise((res) => setTimeout(res, ms));
 
 export {

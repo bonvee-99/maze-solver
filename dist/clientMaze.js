@@ -190,7 +190,6 @@ var solveMaze = function (maze, os, drawPos) {
                 } else {
                   processed[pos.x][pos.y] = true;
                   os.add(pos);
-                  drawPos(pos.x, pos.y);
                 }
               }
             }
@@ -205,17 +204,19 @@ var solveMaze = function (maze, os, drawPos) {
           curr = os.remove();
           x = curr.x;
           y = curr.y;
+          // draw position when you take it off of the structure
+          drawPos(x, y);
           // check right bottom left top!
-          if (checkNextPos({ x: x + 1, y: y }) === true) {
-            drawPos(x + 1, y);
-            return [2 /*return*/, true];
-          }
+          checkNextPos({ x: x, y: y - 1 });
+          checkNextPos({ x: x - 1, y: y });
           if (checkNextPos({ x: x, y: y + 1 }) === true) {
             drawPos(x, y + 1);
             return [2 /*return*/, true];
           }
-          checkNextPos({ x: x - 1, y: y });
-          checkNextPos({ x: x, y: y - 1 });
+          if (checkNextPos({ x: x + 1, y: y }) === true) {
+            drawPos(x + 1, y);
+            return [2 /*return*/, true];
+          }
           return [3 /*break*/, 1];
         case 3:
           return [2 /*return*/, false];

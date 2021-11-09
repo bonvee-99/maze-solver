@@ -1,4 +1,6 @@
 function createBlankMaze() {
+  document.getElementById("maze_container").innerHTML = "";
+
   var rowIndex, colIndex;
 
   var table = document.createElement("table");
@@ -19,7 +21,8 @@ function createBlankMaze() {
         col.style.backgroundColor = "rgb(255,255,255)";
       }
       col.setAttribute("id", "cell_" + rowIndex + "_" + colIndex);
-
+      // attach a listener that listens to that id...
+      col.addEventListener("click", (e) => toggleWall(e.target.id));
       row.appendChild(col);
     }
 
@@ -29,4 +32,20 @@ function createBlankMaze() {
   table.appendChild(tbody);
 
   document.getElementById("maze_container").appendChild(table);
+}
+
+function toggleWall(id) {
+  let cell = document.getElementById(id);
+  // if cell is white or black (red or green do not change!)
+  if (cell.style.backgroundColor == "rgb(255, 255, 255)") {
+    cell.style.backgroundColor = "rgb(0, 0, 0)";
+    let row = id.substring(id.indexOf("_") + 1, id.lastIndexOf("_"));
+    let col = id.substring(id.lastIndexOf("_") + 1, id.length);
+    maze[col][row] = false;
+  } else if (cell.style.backgroundColor == "rgb(0, 0, 0)") {
+    cell.style.backgroundColor = "rgb(255, 255, 255)";
+    let row = id.substring(id.indexOf("_") + 1, id.lastIndexOf("_"));
+    let col = id.substring(id.lastIndexOf("_") + 1, id.length);
+    maze[col][row] = true;
+  }
 }
