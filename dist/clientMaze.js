@@ -246,7 +246,7 @@ var solveMaze = function (maze, os, drawPos, finishMaze) {
           };
           _a.label = 1;
         case 1:
-          if (!!os.isEmpty()) return [3 /*break*/, 3];
+          if (!!os.isEmpty()) return [3 /*break*/, 7];
           return [4 /*yield*/, timer(500)];
         case 2:
           _a.sent();
@@ -258,16 +258,27 @@ var solveMaze = function (maze, os, drawPos, finishMaze) {
           // check right bottom left top!
           checkNextPos({ x: x, y: y - 1 });
           checkNextPos({ x: x - 1, y: y });
-          if (checkNextPos({ x: x, y: y + 1 }) === true) {
-            drawPos(x, y + 1);
-            return [2 /*return*/, true];
-          }
-          if (checkNextPos({ x: x + 1, y: y }) === true) {
-            drawPos(x + 1, y);
-            return [2 /*return*/, true];
-          }
-          return [3 /*break*/, 1];
+          if (!(checkNextPos({ x: x, y: y + 1 }) === true))
+            return [3 /*break*/, 4];
+          return [4 /*yield*/, timer(500)];
         case 3:
+          _a.sent();
+          drawPos(x, y + 1);
+          finishMaze(true);
+          return [2 /*return*/, true];
+        case 4:
+          if (!(checkNextPos({ x: x + 1, y: y }) === true))
+            return [3 /*break*/, 6];
+          return [4 /*yield*/, timer(500)];
+        case 5:
+          _a.sent();
+          drawPos(x + 1, y);
+          finishMaze(true);
+          return [2 /*return*/, true];
+        case 6:
+          return [3 /*break*/, 1];
+        case 7:
+          finishMaze(false);
           return [2 /*return*/, false];
       }
     });

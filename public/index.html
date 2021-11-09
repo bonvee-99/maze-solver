@@ -8,7 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-	<div>
+	<div style="text-align: center;">
 		<h1>rows</h1>
 		<input id="numRows" type="range" min="2" max="100" value="6"/>
 		<p>Value: <span id="size"></span></p>
@@ -19,10 +19,10 @@
 				<span class="slider round"></span>
 			</label>
 		</p>
-		
+		<button id="createMaze">Create Maze</button>
+		<button id="solveMaze">Solve Maze</button>	
 	</div>
-	<button id="createMaze">Create Maze</button>
-	<button id="solveMaze">Solve Maze</button>
+	
 	
 	<script src="blankMaze.js"></script>
 	<script src="../dist/clientMaze.js"></script>
@@ -32,24 +32,27 @@
 		var mazeWidth, mazeHeight;
 		var slider = document.getElementById("numRows");
 		var output = document.getElementById("size");
+		var processing = false;
+		var solved = false;
 	
-		
 		// maze size input
 		output.innerHTML = slider.value;
 		slider.oninput = function() {
   			output.innerHTML = this.value;
 		}
 		
-		// create/solve maze buttons
+		// create/solve maze on clicks
 		document.getElementById("createMaze").addEventListener("click", paint);
 		document.getElementById("solveMaze").addEventListener("click", () => {
 			solve()
-			
 		});
 
 		function solve() {
+			if (processing) return; // prevents user interuption
+			if (solved) return;
 			let osType = document.getElementById("ostype").checked;
 			os = osType? new Stack() : new Queue();
+			processing = true;
 			solveMaze(maze, os, drawPos, finishMaze)
 		}
 
@@ -59,17 +62,24 @@
 			cell.style.backgroundColor = "#F00000";	
 		}
 
-		function finishMaze(fin) {
-			if (fin) {
-				// if finished flash green.
+		function finishMaze(solve) {
+			if (solve) {
+				document.body.style.background = "green"
+				solved = true;
 			} else {
-				// if not flash red?
+				document.body.style.background = "red";
+				solved = true;
 			}
-			// finishes maze
+			processing = false;
 		}
 
 
 	function paint() {
+		// prevents user from interupting maze solver
+		if (processing) return;
+		solved = false; // resets solve to be false so can now do solve()
+		document.body.style.background = "";	
+
 		mazeWidth = document.getElementById("numRows").value;
 		mazeHeight = mazeWidth;
 		maze = [];	

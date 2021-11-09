@@ -128,14 +128,19 @@ const solveMaze = async (maze: maze, os: OrderingStructure, drawPos: any, finish
 		checkNextPos({x, y: y - 1}) 
 		checkNextPos({x: x - 1, y}) 
 		if (checkNextPos({x, y: y + 1}) === true) {
+			await timer(500);
 			drawPos(x, y + 1);
+			finishMaze(true);
 			return true;
 		}	
 		if (checkNextPos({x: x + 1, y}) === true) {
+			await timer(500);
 			drawPos(x + 1, y);
+			finishMaze(true);
 			return true;
 		}
 	}
+	finishMaze(false);
 	return false;
 }
 const timer = (ms: number) => new Promise((res) => setTimeout(res, ms));
