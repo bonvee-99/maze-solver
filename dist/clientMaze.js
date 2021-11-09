@@ -131,9 +131,56 @@ var __generator =
       return { value: op[0] ? op[1] : void 0, done: true };
     }
   };
+// TYPES //
+var Stack = /** @class */ (function () {
+  function Stack() {
+    this.items = [];
+  }
+  Stack.prototype.push = function (el) {
+    this.items.push(el);
+  };
+  Stack.prototype.pop = function () {
+    if (!this.isEmpty()) {
+      return this.items.pop();
+    }
+  };
+  Stack.prototype.isEmpty = function () {
+    return this.items.length == 0;
+  };
+  Stack.prototype.add = function (el) {
+    this.push(el);
+  };
+  Stack.prototype.remove = function () {
+    return this.pop();
+  };
+  return Stack;
+})();
+var Queue = /** @class */ (function () {
+  function Queue() {
+    this.items = [];
+  }
+  Queue.prototype.enqueue = function (el) {
+    this.items.push(el);
+  };
+  Queue.prototype.dequeue = function () {
+    if (!this.isEmpty()) {
+      return this.items.shift();
+    }
+  };
+  Queue.prototype.isEmpty = function () {
+    return this.items.length == 0;
+  };
+  Queue.prototype.add = function (el) {
+    this.enqueue(el);
+  };
+  Queue.prototype.remove = function () {
+    return this.dequeue();
+  };
+  return Queue;
+})();
 // takes in a maze and determines if it is solvable. Does either dfs or bfs
 // REQUIRES: position 0,0 to be a valid path
-var solveMaze = function (maze, os, drawPos) {
+var solveMaze = function (maze, os, drawPos, finishMaze) {
   return __awaiter(void 0, void 0, void 0, function () {
     var width,
       height,
@@ -187,12 +234,14 @@ var solveMaze = function (maze, os, drawPos) {
                 if (solved(pos)) {
                   processed[pos.x][pos.y] = true;
                   return true;
+                  // get it to flash green as in complete!
                 } else {
                   processed[pos.x][pos.y] = true;
                   os.add(pos);
                 }
               }
             }
+            // get to flash red as unsolvable!
             return false;
           };
           _a.label = 1;
@@ -229,4 +278,4 @@ var timer = function (ms) {
     return setTimeout(res, ms);
   });
 };
-// export { solveMaze };
+// export {};

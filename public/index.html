@@ -10,49 +10,75 @@
 <body>
 	<div>
 		<h1>rows</h1>
-		<input id="numRows" type="range" min="1" max="100" value="6"/>
+		<input id="numRows" type="range" min="2" max="100" value="6"/>
 		<p>Value: <span id="size"></span></p>
-		<div
+		<p>
+			Dfs/Bfs:
+			<label class="switch">
+				<input id="ostype" type="checkbox" checked>
+				<span class="slider round"></span>
+			</label>
+		</p>
+		
 	</div>
 	<button id="createMaze">Create Maze</button>
 	<button id="solveMaze">Solve Maze</button>
 	
 	<script src="blankMaze.js"></script>
 	<script src="../dist/clientMaze.js"></script>
-	<script src="../dist/stack.js"></script>
-	<script src="../dist/queue.js"></script>
-	<script>
-		document.getElementById("createMaze").addEventListener("click", paint);
 
+	<script>
+		var maze;
+		var mazeWidth, mazeHeight;
 		var slider = document.getElementById("numRows");
 		var output = document.getElementById("size");
-		output.innerHTML = slider.value;
+	
 		
+		// maze size input
+		output.innerHTML = slider.value;
 		slider.oninput = function() {
   			output.innerHTML = this.value;
 		}
 		
-		var maze;
-
+		// create/solve maze buttons
+		document.getElementById("createMaze").addEventListener("click", paint);
 		document.getElementById("solveMaze").addEventListener("click", () => {
-			solveMaze(maze, new Stack(), drawPos)
+			solve()
+			
 		});
 
+		function solve() {
+			let osType = document.getElementById("ostype").checked;
+			os = osType? new Stack() : new Queue();
+			solveMaze(maze, os, drawPos, finishMaze)
+		}
+
+		// functions for solvMaze
 		function drawPos(x, y) {
 			cell = document.getElementById("cell_" + y + "_" + x);
 			cell.style.backgroundColor = "#F00000";	
 		}
 
-		var mazeWidth, mazeHeight;
+		function finishMaze(fin) {
+			if (fin) {
+				// if finished flash green.
+			} else {
+				// if not flash red?
+			}
+			// finishes maze
+		}
+
 
 	function paint() {
 		mazeWidth = document.getElementById("numRows").value;
 		mazeHeight = mazeWidth;
+		maze = [];	
 
 		// loop through 2d array paint (black for wall) (white for path)
 		createBlankMaze();
-		maze = [];
-		// create walls
+		// reset maze to be empty
+		
+		// create 2d array of true (initial maze)
 		for (let i = 0; i < mazeWidth; i++) {
 			let col = [];
 			for (let j = 0; j < mazeHeight; j++) {

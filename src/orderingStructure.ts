@@ -7,4 +7,4 @@ interface OrderingStructure {
 	isEmpty: () => boolean;
 }
 
-export default OrderingStructure
+export default OrderingStructure;

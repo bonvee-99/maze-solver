@@ -1,7 +1,65 @@
-import Stack from "./stack"
-import Queue from "./queue"
-import OrderingStructure from "./orderingStructure"
+import OrderingStructure from "./orderingStructure";
 
+// TYPES //
+class Stack implements OrderingStructure {
+	items: Array<position>;
+
+	constructor() {
+		this.items = [];
+	}
+
+	push(el: position): void {
+		this.items.push(el);
+	}
+
+	pop(): position | undefined {
+		if (!this.isEmpty()) {
+			return this.items.pop();
+		}
+	}
+	
+	isEmpty(): boolean {
+		return this.items.length == 0;
+	}
+
+	add(el: position): void {
+		this.push(el);
+	}
+
+	remove(): position | undefined {
+		return this.pop();
+	}
+}
+
+class Queue {
+	items: Array<position>;
+
+	constructor() {
+		this.items = [];
+	}
+
+	enqueue(el: position): void {
+		this.items.push(el);
+	}
+
+	dequeue(): position | undefined {
+		if (!this.isEmpty()) {
+			return this.items.shift();
+		}
+	}
+
+	isEmpty(): boolean {
+		return this.items.length == 0;
+	}
+
+	add(el: position): void {
+		this.enqueue(el);
+	}
+
+	remove(): position | undefined {
+		return this.dequeue();
+	}
+}
 // represents x,y position in maze
 type position = {x: number, y: number}
 // 2d array representing a maze- true = open path. false = wall
@@ -9,7 +67,7 @@ type maze = Array<Array<boolean>>;
 
 // takes in a maze and determines if it is solvable. Does either dfs or bfs
 // REQUIRES: position 0,0 to be a valid path
-const solveMaze = async (maze: maze, os: OrderingStructure, drawPos: any) => {
+const solveMaze = async (maze: maze, os: OrderingStructure, drawPos: any, finishMaze: any) => {
 	// initialize ordering strucutre
 	// create 2d array of size maze. t/f values representing visited nodes
 	if (maze.length === 0 || maze.length === 1) return true;
@@ -45,12 +103,14 @@ const solveMaze = async (maze: maze, os: OrderingStructure, drawPos: any) => {
 				if (solved(pos)) {
 					processed[pos.x][pos.y] = true;
 					return true;
+					// get it to flash green as in complete!
 				} else {
 					processed[pos.x][pos.y] = true;
 					os.add(pos);
 				}
 			}
 		}
+		// get to flash red as unsolvable!
 		return false;
 	}
 
@@ -80,8 +140,3 @@ const solveMaze = async (maze: maze, os: OrderingStructure, drawPos: any) => {
 }
 const timer = (ms: number) => new Promise((res) => setTimeout(res, ms));
 
-export {
-	position,
-	maze,
-	solveMaze
-}
