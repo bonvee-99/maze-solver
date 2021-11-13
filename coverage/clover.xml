@@ -1,65 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1636416668756" clover="3.2.0">
-  <project timestamp="1636416668757" name="All files">
-    <metrics statements="66" coveredstatements="65" conditionals="20" coveredconditionals="19" methods="18" coveredmethods="18" elements="104" coveredelements="102" complexity="0" loc="66" ncloc="66" packages="1" files="3" classes="3"/>
-    <file name="maze.ts" path="/Users/benjaminvinnick/Desktop/mazesolver/src/maze.ts">
-      <metrics statements="36" coveredstatements="35" conditionals="18" coveredconditionals="17" methods="4" coveredmethods="4"/>
+<coverage generated="1636847873473" clover="3.2.0">
+  <project timestamp="1636847873473" name="All files">
+    <metrics statements="66" coveredstatements="66" conditionals="20" coveredconditionals="20" methods="18" coveredmethods="18" elements="104" coveredelements="104" complexity="0" loc="66" ncloc="66" packages="1" files="3" classes="3"/>
+    <file name="maze.ts" path="/Users/benjaminvinnick/Desktop/programming/mazesolver/src/maze.ts">
+      <metrics statements="36" coveredstatements="36" conditionals="18" coveredconditionals="18" methods="4" coveredmethods="4"/>
       <line num="12" count="1" type="stmt"/>
-      <line num="15" count="17" type="cond" truecount="3" falsecount="0"/>
-      <line num="16" count="13" type="stmt"/>
-      <line num="17" count="13" type="stmt"/>
-      <line num="19" count="13" type="stmt"/>
-      <line num="20" count="13" type="stmt"/>
-      <line num="21" count="58" type="stmt"/>
-      <line num="22" count="58" type="stmt"/>
-      <line num="23" count="304" type="stmt"/>
-      <line num="25" count="58" type="stmt"/>
-      <line num="29" count="13" type="stmt"/>
-      <line num="31" count="13" type="stmt"/>
-      <line num="32" count="164" type="cond" truecount="4" falsecount="0"/>
-      <line num="35" count="13" type="stmt"/>
-      <line num="36" count="448" type="stmt"/>
-      <line num="39" count="13" type="stmt"/>
-      <line num="41" count="587" type="cond" truecount="6" falsecount="0"/>
-      <line num="43" count="295" type="cond" truecount="1" falsecount="0"/>
-      <line num="45" count="164" type="cond" truecount="2" falsecount="0"/>
-      <line num="46" count="9" type="stmt"/>
-      <line num="47" count="9" type="stmt"/>
-      <line num="49" count="155" type="stmt"/>
-      <line num="50" count="155" type="stmt"/>
-      <line num="54" count="578" type="stmt"/>
-      <line num="57" count="13" type="stmt"/>
-      <line num="59" count="149" type="stmt"/>
-      <line num="60" count="149" type="stmt"/>
-      <line num="61" count="149" type="stmt"/>
-      <line num="64" count="149" type="stmt"/>
-      <line num="65" count="149" type="stmt"/>
-      <line num="66" count="149" type="cond" truecount="1" falsecount="0"/>
+      <line num="15" count="18" type="cond" truecount="3" falsecount="0"/>
+      <line num="16" count="14" type="stmt"/>
+      <line num="17" count="14" type="stmt"/>
+      <line num="19" count="14" type="stmt"/>
+      <line num="20" count="14" type="stmt"/>
+      <line num="21" count="68" type="stmt"/>
+      <line num="22" count="68" type="stmt"/>
+      <line num="23" count="404" type="stmt"/>
+      <line num="25" count="68" type="stmt"/>
+      <line num="29" count="14" type="stmt"/>
+      <line num="31" count="14" type="stmt"/>
+      <line num="32" count="247" type="cond" truecount="4" falsecount="0"/>
+      <line num="35" count="14" type="stmt"/>
+      <line num="36" count="743" type="stmt"/>
+      <line num="39" count="14" type="stmt"/>
+      <line num="41" count="915" type="cond" truecount="6" falsecount="0"/>
+      <line num="43" count="553" type="cond" truecount="1" falsecount="0"/>
+      <line num="45" count="247" type="cond" truecount="2" falsecount="0"/>
+      <line num="46" count="10" type="stmt"/>
+      <line num="47" count="10" type="stmt"/>
+      <line num="49" count="237" type="stmt"/>
+      <line num="50" count="237" type="stmt"/>
+      <line num="54" count="905" type="stmt"/>
+      <line num="57" count="14" type="stmt"/>
+      <line num="59" count="231" type="stmt"/>
+      <line num="60" count="231" type="stmt"/>
+      <line num="61" count="231" type="stmt"/>
+      <line num="64" count="231" type="stmt"/>
+      <line num="65" count="231" type="stmt"/>
+      <line num="66" count="231" type="cond" truecount="1" falsecount="0"/>
       <line num="67" count="9" type="stmt"/>
-      <line num="69" count="140" type="cond" truecount="0" falsecount="1"/>
-      <line num="70" count="0" type="stmt"/>
+      <line num="69" count="222" type="cond" truecount="1" falsecount="0"/>
+      <line num="70" count="1" type="stmt"/>
       <line num="73" count="4" type="stmt"/>
       <line num="79" count="1" type="stmt"/>
     </file>
-    <file name="queue.ts" path="/Users/benjaminvinnick/Desktop/mazesolver/src/queue.ts">
+    <file name="queue.ts" path="/Users/benjaminvinnick/Desktop/programming/mazesolver/src/queue.ts">
       <metrics statements="15" coveredstatements="15" conditionals="1" coveredconditionals="1" methods="7" coveredmethods="7"/>
       <line num="5" count="2" type="stmt"/>
-      <line num="9" count="11" type="stmt"/>
+      <line num="9" count="12" type="stmt"/>
       <line num="12" count="2" type="stmt"/>
-      <line num="13" count="66" type="stmt"/>
+      <line num="13" count="149" type="stmt"/>
       <line num="16" count="2" type="stmt"/>
-      <line num="17" count="65" type="cond" truecount="1" falsecount="0"/>
-      <line num="18" count="64" type="stmt"/>
+      <line num="17" count="147" type="cond" truecount="1" falsecount="0"/>
+      <line num="18" count="146" type="stmt"/>
       <line num="22" count="2" type="stmt"/>
-      <line num="23" count="130" type="stmt"/>
+      <line num="23" count="294" type="stmt"/>
       <line num="26" count="2" type="stmt"/>
-      <line num="27" count="66" type="stmt"/>
+      <line num="27" count="149" type="stmt"/>
       <line num="30" count="2" type="stmt"/>
-      <line num="31" count="65" type="stmt"/>
+      <line num="31" count="147" type="stmt"/>
       <line num="33" count="2" type="stmt"/>
       <line num="35" count="2" type="stmt"/>
     </file>
-    <file name="stack.ts" path="/Users/benjaminvinnick/Desktop/mazesolver/src/stack.ts">
+    <file name="stack.ts" path="/Users/benjaminvinnick/Desktop/programming/mazesolver/src/stack.ts">
       <metrics statements="15" coveredstatements="15" conditionals="1" coveredconditionals="1" methods="7" coveredmethods="7"/>
       <line num="5" count="2" type="stmt"/>
       <line num="9" count="14" type="stmt"/>

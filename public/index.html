@@ -28,12 +28,12 @@
 	<script src="../dist/clientMaze.js"></script>
 
 	<script>
-		var maze;
-		var mazeWidth, mazeHeight;
-		var slider = document.getElementById("numRows");
-		var output = document.getElementById("size");
-		var processing = false;
-		var solved = false;
+		let maze;
+		let mazeWidth, mazeHeight;
+		let slider = document.getElementById("numRows");
+		let output = document.getElementById("size");
+		let processing = false;
+		let solved = false;
 	
 		// maze size input
 		output.innerHTML = slider.value;
@@ -49,19 +49,20 @@
 
 		function solve() {
 			if (processing) return; // prevents user interuption
-			if (solved) return;
+			if (solved) return; // requires user to reload maze
 			let osType = document.getElementById("ostype").checked;
 			os = osType? new Stack() : new Queue();
 			processing = true;
 			solveMaze(maze, os, drawPos, finishMaze)
 		}
 
-		// functions for solvMaze
+		// fn passed to solveMaze to draw cells checked
 		function drawPos(x, y) {
 			cell = document.getElementById("cell_" + y + "_" + x);
 			cell.style.backgroundColor = "#F00000";	
 		}
 
+		// callback fn passed to solveMaze
 		function finishMaze(solve) {
 			if (solve) {
 				document.body.style.background = "green"

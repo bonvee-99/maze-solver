@@ -14,25 +14,25 @@ test("successfully solves 1 by 1 maze", () => {
 	expect(solveMaze(tinyMaze, os)).toBe(true);
 })
 
-test("successfully solves 3 wide by 1 tall maze with dfs", () => {
+test("successfully solves 3 tall by 1 wide maze with dfs", () => {
 	let row: maze = [[true, true, true]]
 	let os = new Stack();
 	expect(solveMaze(row, os)).toBe(true);
 })
 
-test("successfully solves 3 wide by 1 tall maze with bfs", () => {
+test("successfully solves 3 tall by 1 wide maze with bfs", () => {
 	let row: maze = [[true, true, true]]
 	let os = new Queue();
 	expect(solveMaze(row, os)).toBe(true);
 })
 
-test("successfully solves 1 wide by 3 tall maze with dfs", () => {
+test("successfully solves 3 wide by 1 tall maze with dfs", () => {
 	let row: maze = [[true], [true], [true]]
 	let os = new Stack();
 	expect(solveMaze(row, os)).toBe(true);
 })
 
-test("successfully solves 1 wide by 3 tall maze with bfs", () => {
+test("successfully solves 3 wide by 1 tall maze with bfs", () => {
 	let row: maze = [[true], [true], [true]];
 	let os = new Queue();
 	expect(solveMaze(row, os)).toBe(true);
@@ -98,8 +98,14 @@ test("successfully does not solve large maze with dfs - all directions", () => {
 	expect(solveMaze(largeMaze, os)).toBe(false);
 })
 
-test("successfully solves very large maze", () => {
+test("successfully solves very large maze with dfs", () => {
 	const largeMaze: maze = [[true,true,true,true,true,true,true,true,true,false],[false,false,false,false,false,false,false,false,true,false],[true,true,true,true,true,true,true,true,true,true],[false,true,true,true,false,false,false,false,false,false],[true,true,true,true,true,true,true,true,true,true],[true,true,true,true,true,true,true,true,true,true],[true,true,true,true,true,true,true,true,true,true],[true,true,true,true,true,true,true,true,true,true],[true,true,true,true,true,true,true,true,true,true],[true,true,true,true,true,true,true,true,true,true]]
 	let os = new Stack();
+	expect(solveMaze(largeMaze, os)).toBe(true);
+})
+
+test("successfully solves very large maze with bfs", () => {
+	const largeMaze: maze = [[true,true,true,true,true,true,true,true,true,false],[false,false,false,false,false,false,false,false,true,false],[true,true,true,true,true,true,true,true,true,true],[false,true,true,true,false,false,false,false,false,false],[true,true,true,true,true,true,true,true,true,true],[true,true,true,true,true,true,true,true,true,true],[true,true,true,true,true,true,true,true,true,true],[true,true,true,true,true,true,true,true,true,true],[true,true,true,true,true,true,true,true,true,true],[true,true,true,true,true,true,true,true,true,true]]
+	let os = new Queue();
 	expect(solveMaze(largeMaze, os)).toBe(true);
 })
